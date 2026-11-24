@@ -12,10 +12,13 @@ A small full-stack chat app: **React** frontend, **FastAPI** backend, **SQLite**
 
 | | URL |
 |---|---|
-| Frontend | _add after deploying_ |
-| Backend | _add after deploying_ (`/health`, `/chat`, `/sessions/{id}/messages`) |
-| Repository | _add_ |
+| Frontend | https://lyftar-ai.vercel.app |
+| Backend | https://llm-chat-backend-cp5q.onrender.com (`/health`, `/chat`, `/sessions/{id}/messages`) |
+| Repository | https://github.com/muskan-424/lyftar-ai |
 | Demo video | _add_ |
+
+The backend runs on Render's free plan: it sleeps after about 15 minutes idle (the first request
+then takes around a minute) and its SQLite history resets on redeploy and after a sleep.
 
 Deploying: backend as a Docker web service (see `render.yaml`; set `LLM_API_KEYS`,
 `ALLOWED_ORIGINS=<frontend url>`, `ENABLE_FAILURE_SIMULATION=true`), frontend on
