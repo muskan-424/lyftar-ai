@@ -1,0 +1,26 @@
+# Render blueprint for the backend (Docker). The frontend is deployed separately
+# (Vercel / Netlify / Cloudflare Pages) with VITE_API_BASE_URL set to this service's URL.
+services:
+  - type: web
+    name: llm-chat-backend
+    runtime: docker
+    dockerContext: ./backend
+    dockerfilePath: ./backend/Dockerfile
+    healthCheckPath: /health
+    # A persistent disk keeps SQLite history across restarts/deploys (paid plans).
+    # On the free plan the filesystem is ephemeral: remove `disk` and expect history to reset on redeploy.
+    disk:
+      name: app-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: LLM_API_KEYS
+        sync: false # paste your keys in the Render dashboard
+      - key: ALLOWED_ORIGINS
+        sync: false # your frontend URL, e.g. https://my-chat.vercel.app
+      - key: DATABASE_URL
+        value: sqlite:////data/app.db
+      - key: ENABLE_FAILURE_SIMULATION
+        value: "true"
+      - key: LLM_MODEL
+        value: gemini/gemini-3.5-flash

@@ -1,0 +1,6 @@
+litellm==1.110.3
+fastapi==0.165.0
+uvicorn==0.54.0
+diskcache==5.6.3
+orjson==3.13.0  # LiteLLM imports it on cache hits (not pulled in by the base install)
+soundfile==0.14.0  # same: imported by LiteLLM's cache-hit path
