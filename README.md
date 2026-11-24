@@ -1,7 +1,7 @@
 # LLM Chatbot with Key Failover and Response Caching
 
 A small full-stack chat app: **React** frontend, **FastAPI** backend, **SQLite** storage and a
-**LiteLLM** gateway in front of **Gemini 3.5 Flash** (`gemini/gemini-3.5-flash`).
+**LiteLLM** gateway in front of **Gemini 3.5 Flash-Lite** (`gemini/gemini-3.5-flash-lite`).
 
 - Multi-turn conversations stored per session in SQLite
 - A pool of API keys with automatic failover on 429 / quota / 5xx errors

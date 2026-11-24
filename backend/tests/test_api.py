@@ -47,7 +47,7 @@ def test_chat_response_shape(client):
     assert body["reply"]
     meta = body["metadata"]
     assert meta["resolution_source"] == "LIVE_INFERENCE"
-    assert meta["model"] == "gemini/gemini-3.5-flash"
+    assert meta["model"] == "gemini/gemini-3.5-flash-lite"
     assert isinstance(meta["latency_ms"], int)
     assert meta["input_tokens"] > 0 and meta["output_tokens"] > 0
     assert meta["key_id"] == "key_1"

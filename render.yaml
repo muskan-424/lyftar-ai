@@ -25,4 +25,4 @@ services:
       - key: ENABLE_FAILURE_SIMULATION
         value: "true"
       - key: LLM_MODEL
-        value: gemini/gemini-3.5-flash
+        value: gemini/gemini-3.5-flash-lite
