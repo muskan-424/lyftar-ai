@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import ReactMarkdown from "react-markdown";
 import { sendChat } from "./api.js";
 
 const newSessionId = () =>
@@ -27,7 +28,9 @@ function AssistantMessage({ msg }) {
   return (
     <div className="row assistant">
       <div className="bubble" data-testid="assistant-message">
-        <div className="text">{msg.text}</div>
+        <div className="text markdown">
+          <ReactMarkdown>{msg.text}</ReactMarkdown>
+        </div>
         <div className="meta">
           <span className={"badge " + (cached ? "cache" : "live")}>
             <span data-testid="meta-source">{m.resolution_source}</span>
