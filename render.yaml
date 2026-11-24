@@ -7,12 +7,14 @@ services:
     dockerContext: ./backend
     dockerfilePath: ./backend/Dockerfile
     healthCheckPath: /health
-    # A persistent disk keeps SQLite history across restarts/deploys (paid plans).
-    # On the free plan the filesystem is ephemeral: remove `disk` and expect history to reset on redeploy.
-    disk:
-      name: app-data
-      mountPath: /data
-      sizeGB: 1
+    # Free plan: the filesystem is ephemeral, so SQLite history resets on redeploy and when the
+    # service spins down after idling. To keep history, switch to a paid plan (e.g. `plan: starter`)
+    # and add a persistent disk:
+    #   disk:
+    #     name: app-data
+    #     mountPath: /data
+    #     sizeGB: 1
+    plan: free
     envVars:
       - key: LLM_API_KEYS
         sync: false # paste your keys in the Render dashboard
